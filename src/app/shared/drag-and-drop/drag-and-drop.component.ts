@@ -30,7 +30,6 @@ export class DragAndDropComponent implements OnInit {
 
   sendImgUpload(evt): void {
     this.fileToUpload = evt.item(0);
-    console.log('fileToUpload', this.fileToUpload);
   }
 
   async onSubmit(evt) {
@@ -39,11 +38,9 @@ export class DragAndDropComponent implements OnInit {
       if(this.fileToUpload) {
         this.prediction = await this.verifyFruitService.sendImage(this.picToSend.nativeElement.files[0])
         this.picToSend.nativeElement.value = null;
-        console.log(this.prediction)
       } else {
         this.fileToUpload = evt[0]
         this.prediction = await this.verifyFruitService.sendImage(evt[0])
-        console.log('res',this.prediction)
       }
     } catch {
       console.log('error')
@@ -55,20 +52,17 @@ export class DragAndDropComponent implements OnInit {
   sendUrl(): void {
     const url = this.urlToSend.nativeElement.value;
     this.fileToUpload = url;
-    console.log(url);
     this.verifyFruitService.sendUrlImage(url).subscribe(
       (res) => {
         this.prediction = res;
-        console.log('good', res)
       },
       (error) => {
-        console.log('erreur', error)
+        console.log(error)
       }
     );
   }
 
   closeModal(evt) {
     this.prediction = evt;
-    console.log('pred', this.prediction)
   }
 }

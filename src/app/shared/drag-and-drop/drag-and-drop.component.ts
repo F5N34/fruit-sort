@@ -68,13 +68,16 @@ export class DragAndDropComponent implements OnInit {
   }
 
   sendUrl(): void {
+    this.isLoading = true;
     const url = this.urlToSend.nativeElement.value;
     this.fileToUpload = url;
     this.verifyFruitService.sendUrlImage(url).subscribe(
       (res) => {
         this.prediction = res;
+        this.isLoading = false;
       },
       (error) => {
+        this.isLoading = false;
         console.log(error)
       }
     );

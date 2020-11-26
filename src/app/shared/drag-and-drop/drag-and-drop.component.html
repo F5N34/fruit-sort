@@ -24,7 +24,7 @@
 <div class="input-group mb-3">
     <input type="text" class="form-control" #urlToSend placeholder="Or check with URL image" aria-label="Or check with URL image" aria-describedby="basic-addon2">
     <div class="input-group-append">
-      <button class="btn btn-outline-primary" type="button" (click)="sendUrl()"> Upload </button>
+      <button class="btn btn-outline-primary" type="button" (click)="sendUrl()" [disabled]='isLoading'>  Upload </button>
     </div>
 </div>
 <div *ngIf='prediction'>

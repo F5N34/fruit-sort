@@ -8,6 +8,7 @@ import { DragAndDropComponent } from './shared/drag-and-drop/drag-and-drop.compo
 import { DndDirective } from './shared/drag-and-drop/dnd.directive';
 import { ResultComponent } from './shared/result/result.component';
 import { ChartsModule } from 'ng2-charts';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ChartsModule } from 'ng2-charts';
     WelcomeComponent,
     DragAndDropComponent,
     DndDirective,
-    ResultComponent
+    ResultComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

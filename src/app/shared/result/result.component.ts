@@ -40,7 +40,7 @@ export class ResultComponent implements OnInit {
     setTimeout(()=>{
       this.openModal();
       this.openFile();
- }, 500);
+ }, 10);
     
   }
   

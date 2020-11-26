@@ -1,8 +1,8 @@
-<div class="canvas mt-5 mb-5">
-    <div *ngIf='false'>
-        
+<div class="canvas mt-5">
+    <div class="spinner" *ngIf='isLoading'>
+        <app-spinner></app-spinner>
     </div>
-    <div class="drag-and-drop fileover">
+    <div class="drag-and-drop fileover" *ngIf='!isLoading'>
         <form (change)="onSubmit($event)">
             <input type="file" #picToSend name="pictureUpload" appDnd (fileDropped)="onSubmit($event)" id="pictureUpload" multiple accept="image/*">
         </form>
@@ -16,7 +16,7 @@
         <h3> Drag and drop your picture here </h3>
         <h3>or</h3>
         <div class="browse-btn">
-            <label for="">Click here for upload</label>
+            <label for="">Click here to upload</label>
         </div>  
     </div>
 </div>

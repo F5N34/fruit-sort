@@ -41,6 +41,7 @@ export class DragAndDropComponent implements OnInit {
         this.picToSend.nativeElement.value = null;
         console.log(this.prediction)
       } else {
+        this.fileToUpload = evt[0]
         this.prediction = await this.verifyFruitService.sendImage(evt[0])
         console.log('res',this.prediction)
       }

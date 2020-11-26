@@ -1,5 +1,4 @@
-# Fruit sort using Deep Learning - Front-End - REST API
-
+# Fruit sort using Deep Learning - Front-End - Angular
 Projet de classification d'image de fruit : 
 - Pas assez mure
 - Bon

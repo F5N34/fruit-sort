@@ -40,7 +40,6 @@ export class ResultComponent implements OnInit {
     setTimeout(()=>{
       this.openModal();
       this.openFile();
-      console.log('file img', this.fileImg);
  }, 500);
     
   }

@@ -25,7 +25,6 @@ export class VerifyFruitService {
   ) { }
 
   public sendUrlImage(url: any): Observable<Prediction> {
-    console.log(url)
     return this.http.get<Prediction>(this.baseApi + '/classify-url?url=' + url);
   }
 

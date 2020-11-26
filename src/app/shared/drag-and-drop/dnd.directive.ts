@@ -12,38 +12,29 @@ export class DndDirective implements OnChanges {
   constructor() { }
 
   ngOnChanges() {
-    console.log('lol')
   }
 
   @HostListener('dragover', ['$event']) onDragOver(evt) {
     evt.preventDefault();
     evt.stopPropagation();
     this.fileOver = true
-
-    console.log('Drag Over');
   }
 
   @HostListener('dragleave', ['$event']) onDragLeave(evt: DragEvent) {
     evt.preventDefault();
     evt.stopPropagation();
     this.fileOver = false
-    console.log('Drag Leave');
   }
 
   @HostListener('drop', ['$event']) onDrop(evt) {
     evt.preventDefault();
     evt.stopPropagation();
-    console.log('listen', evt);
-    
     this.fileOver = false;
     
     const files = evt.dataTransfer.files;
 
     if(files.length > 0) {
-      console.log('file', files)
       this.fileDropped.emit(files);
     }
-
-    console.log('Drop');
   }
 }

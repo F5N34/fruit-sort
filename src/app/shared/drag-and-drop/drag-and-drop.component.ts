@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
+import { cpuUsage } from 'process';
 import { Prediction } from '../interfaces/prediction';
 import { Upload } from '../interfaces/upload.interface';
 import { VerifyFruitService } from '../services/verify-fruit.service';
@@ -18,6 +19,8 @@ export class DragAndDropComponent implements OnInit {
 
   prediction: Prediction;
 
+  isLoading: boolean = false;
+
   @ViewChild('picToSend') picToSend: ElementRef;
 
   constructor(
@@ -32,31 +35,49 @@ export class DragAndDropComponent implements OnInit {
     this.fileToUpload = evt.item(0);
   }
 
-  async onSubmit(evt) {
+  onSubmit(evt) {
     this.fileToUpload = this.picToSend.nativeElement.files[0];
-    try {
-      if(this.fileToUpload) {
-        this.prediction = await this.verifyFruitService.sendImage(this.picToSend.nativeElement.files[0])
-        this.picToSend.nativeElement.value = null;
-      } else {
-        this.fileToUpload = evt[0]
-        this.prediction = await this.verifyFruitService.sendImage(evt[0])
-      }
-    } catch {
-      console.log('error')
+    this.isLoading = true
+    if(this.fileToUpload) {
+      this.isLoading = true;
+      this.verifyFruitService.sendImage(this.picToSend.nativeElement.files[0]).subscribe(
+        (res) => {
+          this.prediction = res;
+          this.isLoading = false;
+        },
+        (err) => {
+          this.isLoading = false;
+          console.log(err);
+        }
+      );
+      this.picToSend.nativeElement.value = null;
+    } else {
+      this.fileToUpload = evt[0]
+      this.verifyFruitService.sendImage(evt[0]).subscribe(
+        (res) => {
+          this.prediction = res;
+          this.isLoading = false;
+        },
+        (err) => {
+          console.log(err);
+          this.isLoading = false
+        }
+      );
     }
-    
     this.picToSend.nativeElement.value = null;
   }
 
   sendUrl(): void {
+    this.isLoading = true;
     const url = this.urlToSend.nativeElement.value;
     this.fileToUpload = url;
     this.verifyFruitService.sendUrlImage(url).subscribe(
       (res) => {
         this.prediction = res;
+        this.isLoading = false;
       },
       (error) => {
+        this.isLoading = false;
         console.log(error)
       }
     );

@@ -28,19 +28,10 @@ export class VerifyFruitService {
     return this.http.get<Prediction>(this.baseApi + '/classify-url?url=' + url);
   }
 
-  public async sendImage(pic: File): Promise<Prediction> {
+  public sendImage(pic: File): Observable<Prediction> {
     const header = new HttpHeaders({ 'enctype': 'multipart/form-data' });
     const formData = new FormData;
     formData.append('file', pic);
-    return await this.http
-    .post<Prediction>(
-      this.baseApi + '/upload',
-      formData,
-      {
-        headers: header
-      }
-    )
-    .toPromise()
-  ;
+    return  this.http.post<Prediction>(this.baseApi + '/upload',formData,{headers: header});
   }
 }

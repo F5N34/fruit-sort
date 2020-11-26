@@ -10,11 +10,9 @@ export class AppComponent implements OnInit{
   title = 'Fruit Sort AI';
 
   constructor(
-    private http: HttpClient
   ) { }
 
   ngOnInit() {
-    console.log('hello')
 
   }
 

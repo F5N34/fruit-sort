@@ -1,6 +1,36 @@
-# FruitSort
+# Fruit sort using Deep Learning - Front-End - REST API
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+Projet de classification d'image de fruit : 
+- Pas assez mure
+- Bon
+- Trop mure
+
+Ce projet a été réalisé dans le cadre d'un workshop à l'EPSI Montpellier : l'IA au service de l'industrie
+
+Il s'agit de la partie Front-End qui permet d'envoyer des images afin d'effectuer des prédictions en utilisant notre modèle entrainé.
+
+Projet sur l'entrainement du modèle : https://github.com/joconte/fruit-classifier
+
+Projet sur le Back-End : https://github.com/joconte/ai-fruit-api
+
+# Outils utilisés
+- Angular 11.0.2
+- Chart.js & Ng2-charts
+- Heroku
+
+# Groupe de travail
+- JACQUES Nils
+- SEVRAIN Florian
+- LASPOUGEAS Thomas
+- CONTE Jonathan
+
+# Site web
+API accessible ici : https://fruit-recognizer-front-angular.herokuapp.com/
+
+Routes : 
+- POST - /upload - param : file
+- GET - /classify-url - query param : url
+
 
 ## Development server
 

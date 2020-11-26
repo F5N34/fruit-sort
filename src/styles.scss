@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/scss/bootstrap.scss';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+p {
+    margin-bottom: 0.2em;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fff;
+}
+
+.modal-backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
